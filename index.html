@@ -500,6 +500,15 @@
 
       <!-- 7-11／全家共用欄位 -->
       <div id="storeFields" class="hidden">
+
+        <!--
+          超商寄送提醒：
+          只有選擇 7-11 或全家時才會顯示。
+        -->
+        <div class="payment-notice" style="margin-top:0; margin-bottom:16px;">
+          <strong>超商寄送方式</strong><br>
+          商品統一採<strong>冷凍寄出</strong>，收到取貨通知後請儘速取貨，以確保商品品質。
+        </div>
         <div class="field">
           <label for="receiverName">
             收件人姓名
@@ -789,7 +798,7 @@
             : familyMartShippingFee;
 
         deliveryFeeNote.textContent =
-          `${deliveryMethod} 店到店運費 NT${fee}。`;
+          `${deliveryMethod} 店到店運費 NT$${fee}。`;
 
         paymentMethod.innerHTML = `
           <option value="">請選擇付款方式</option>
@@ -1092,19 +1101,21 @@
       }
 
       /* ---------- 銀行轉帳資料 ---------- */
-let accountLastFive = "";
+
+      let accountLastFive = "";
       let transferDetails = "";
 
       if (paymentMethod === "銀行轉帳") {
-accountLastFive =
+        accountLastFive =
           document.getElementById("accountLastFive").value.trim();
-if (!/^\d{5}$/.test(accountLastFive)) {
+
+        if (!/^\d{5}$/.test(accountLastFive)) {
           alert("請輸入正確的匯款帳號後五碼");
           return;
         }
 
         transferDetails = `
-<div class="result-line">
+          <div class="result-line">
             <strong>匯款帳號後五碼：</strong>
             ${escapeHtml(accountLastFive)}
           </div>
@@ -1142,7 +1153,7 @@ if (!/^\d{5}$/.test(accountLastFive)) {
         storeName,
         storeNumber,
         paymentMethod,
-accountLastFive,
+        accountLastFive,
         remark
       };
 
@@ -1213,7 +1224,7 @@ accountLastFive,
         else {
           paymentFollowUp = `
             <div class="cash-notice">
-              面交採現金付款，訂單總額為 NT${totalAmount}。
+              面交採現金付款，訂單總額為 NT$${totalAmount}。
               請準備剛好金額，現場不提供找零。
             </div>
           `;
@@ -1274,17 +1285,17 @@ accountLastFive,
 
           <div class="result-line">
             <strong>商品金額：</strong>
-            NT${productAmount}
+            NT$${productAmount}
           </div>
 
           <div class="result-line">
             <strong>運費：</strong>
-            NT${shippingFee}
+            NT$${shippingFee}
           </div>
 
           <div class="result-line">
             <strong>訂單總額：</strong>
-            NT${totalAmount}
+            NT$${totalAmount}
           </div>
 
           <div class="result-line">

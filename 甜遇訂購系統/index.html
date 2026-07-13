@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+
+<!--
+  網頁語言設定為繁體中文
+-->
+<html lang="zh-TW">
+
+<head>
+
+  <!--
+    文字編碼：UTF-8
+    避免中文顯示成亂碼
+  -->
+  <meta charset="UTF-8">
+
+  <!--
+    手機版畫面設定
+    讓網站在手機上按照螢幕寬度顯示
+  -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <!--
+    瀏覽器分頁顯示的名稱
+  -->
+  <title>甜遇｜杜拜巧克力訂購</title>
+
+
+  <!-- ==================================================
+       CSS 網頁外觀設定開始
+       ================================================== -->
+
+  <style>
+
+    /*
+      全部元素的基本設定
+
+      box-sizing: border-box
+      讓元素寬度包含邊框和內距，方便控制排版
+
+      margin、padding 設為 0
+      清除瀏覽器預設留白
+    */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /*
+      整個網頁的基本外觀
+
+      font-family：網頁字體
+      background：網站背景色
+      color：主要文字顏色
+      line-height：文字行距
+    */
+    body {
+      font-family: "Microsoft JhengHei", Arial, sans-serif;
+      background: #fff8f4;
+      color: #3e302a;
+      line-height: 1.6;
+    }
+
+
+    /*
+      網頁主要內容容器
+
+      width：
+      手機版左右保留 16px
+      電腦版最大寬度為 720px
+
+      margin: 0 auto
+      讓內容水平置中
+
+      padding-bottom
+      保留網站底部空間
+    */
+    .container {
+      width: min(100% - 32px, 720px);
+      margin: 0 auto;
+      padding-bottom: 60px;
+    }
+
+
+    /*
+      網站最上方品牌區域
+    */
+    .hero {
+      text-align: center;
+      padding: 55px 20px 35px;
+    }
+
+
+    /*
+      中文品牌名稱「甜遇」
+    */
+    .brand-name {
+      color: #74452f;
+      font-size: 42px;
+      letter-spacing: 5px;
+      margin-bottom: 6px;
+    }
+
+
+    /*
+      英文品牌名稱
+    */
+    .brand-en {
+      color: #a17c69;
+      font-size: 14px;
+      letter-spacing: 3px;
+    }
+
+
+    /*
+      品牌標語
+    */
+    .slogan {
+      color: #715f56;
+      margin-top: 14px;
+      font-size: 16px;
+    }
+
+
+    /*
+      每一個白色內容卡片
+
+      background：卡片背景
+      border-radius：圓角
+      padding：卡片內距
+      margin-bottom：卡片間距
+      box-shadow：卡片陰影
+    */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(81, 50, 35, 0.08);
+    }
+
+
+    /*
+      每個區塊的標題
+
+      例如：
+      選擇商品
+      訂購人資料
+      收貨方式
+    */
+    .section-title {
+      color: #74452f;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+
+    /*
+      商品名稱
+    */
+    .product-name {
+      font-size: 24px;
+      color: #603a29;
+      margin-bottom: 5px;
+    }
+
+
+    /*
+      商品描述文字
+    */
+    .product-description {
+      color: #88766d;
+      margin-bottom: 15px;
+    }
+
+
+    /*
+      商品價格文字
+    */
+    .price {
+      color: #b45d38;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+
+    /*
+      每一個表單欄位的外層空間
+    */
+    .field {
+      margin-bottom: 18px;
+    }
+
+
+    /*
+      欄位名稱
+
+      例如：
+      姓名
+      電話
+      收貨方式
+    */
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+      color: #54433b;
+    }
+
+
+    /*
+      必填欄位的紅色星號
+    */
+    .required {
+      color: #c34d3d;
+    }
+
+
+    /*
+      所有文字輸入框、下拉選單、備註欄位
+    */
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #dfd4ce;
+      border-radius: 11px;
+      background: #fffdfc;
+      color: #3e302a;
+      font-size: 16px;
+      outline: none;
+    }
+
+
+    /*
+      使用者點擊欄位時的效果
+    */
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #a06c50;
+      box-shadow: 0 0 0 3px rgba(160, 108, 80, 0.1);
+    }
+
+
+    /*
+      備註欄位設定
+    */
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+
+    /*
+      隱藏欄位
+
+      JavaScript 會依照客人選擇的收貨方式，
+      控制不同欄位顯示或隱藏
+    */
+    .hidden {
+      display: none;
+    }
+
+
+    /*
+      運費說明文字
+    */
+    .fee-note {
+      margin-top: 8px;
+      color: #88766d;
+      font-size: 14px;
+    }
+
+
+    /*
+      訂單金額摘要區
+    */
+    .order-total {
+      background: #fff3eb;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+
+    /*
+      商品金額、運費、總金額的每一列
+    */
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+
+    /*
+      訂單總額那一列的特別樣式
+    */
+    .total-row:last-child {
+      margin-bottom: 0;
+      padding-top: 10px;
+      border-top: 1px solid #e7cec0;
+      font-size: 20px;
+      font-weight: bold;
+      color: #9d4c2e;
+    }
+
+
+    /*
+      送出訂單按鈕
+    */
+    .submit-button {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
+      background: #74452f;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+
+    /*
+      滑鼠移到送出按鈕時的顏色
+    */
+    .submit-button:hover {
+      background: #5f3827;
+    }
+
+
+    /*
+      訂單送出後的結果區
+
+      預設 display: none
+      一開始不顯示
+      客人成功送出後才由 JavaScript 顯示
+    */
+    .result {
+      display: none;
+      margin-top: 22px;
+      padding: 20px;
+      background: #f4faf3;
+      border: 1px solid #cee1ca;
+      border-radius: 14px;
+    }
+
+
+    /*
+      訂單確認結果標題
+    */
+    .result h3 {
+      color: #41633c;
+      margin-bottom: 12px;
+    }
+
+
+    /*
+      訂單確認結果中的每一列資料
+    */
+    .result-line {
+      margin-bottom: 6px;
+      word-break: break-word;
+    }
+
+
+    /*
+      送出按鈕下方的提醒文字
+    */
+    .notice {
+      color: #8a6c5d;
+      font-size: 14px;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+
+    /*
+      銀行轉帳提醒框
+    */
+    .payment-notice {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #fff4dd;
+      border: 1px solid #e8c98d;
+      color: #684b27;
+      font-size: 15px;
+    }
+
+    /*
+      面交現金付款提醒框
+    */
+    .cash-notice {
+      margin-top: 16px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #fff1ee;
+      border: 1px solid #edc2b8;
+      color: #873f31;
+      font-weight: bold;
+    }
+
+    /*
+      前往 LINE 官方帳號按鈕
+    */
+    .line-button {
+      display: block;
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #06c755;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /*
+      訂單編號醒目顯示
+    */
+    .order-number {
+      margin-bottom: 14px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #eaf6e7;
+      color: #335a2e;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    /*
+      手機版排版設定
+
+      當螢幕寬度小於 600px 時，
+      會自動縮小標題與卡片空間
+    */
+    @media (max-width: 600px) {
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .brand-name {
+        font-size: 34px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+
+  </style>
+
+  <!-- ==================================================
+       CSS 網頁外觀設定結束
+       ================================================== -->
+
+</head>
+
+
+<body>
+
+  <!--
+    網頁主要內容開始
+  -->
+  <main class="container">
+
+
+    <!-- ==================================================
+         品牌標題區
+         ================================================== -->
+
+    <header class="hero">
+
+      <!-- 中文品牌名稱 -->
+      <h1 class="brand-name">
+        甜遇
+      </h1>
+
+      <!-- 英文品牌名稱 -->
+      <div class="brand-en">
+        SWEET ENCOUNTER
+      </div>
+
+      <!-- 品牌標語 -->
+      <p class="slogan">
+        一口甜點，一段剛好的相遇
+      </p>
+
+    </header>
+
+
+    <!-- ==================================================
+         商品選擇區
+         ================================================== -->
+
+    <section class="card">
+
+      <!-- 區塊標題 -->
+      <h2 class="section-title">
+        選擇商品
+      </h2>
+
+      <!-- 商品名稱 -->
+      <h3 class="product-name">
+        杜拜巧克力
+      </h3>
+
+      <!-- 商品介紹 -->
+      <p class="product-description">
+        濃郁巧克力搭配酥脆內餡，每一口都有豐富層次。
+      </p>
+
+      <!--
+        顯示給客人看的商品價格
+
+        注意：
+        這裡只有顯示用途。
+
+        真正計算價格的位置，
+        在下面 JavaScript 的 productPrice。
+      -->
+      <div class="price">
+        NT$129／組
+      </div>
+
+
+      <!-- 購買數量欄位 -->
+      <div class="field">
+
+        <!-- 欄位名稱 -->
+        <label for="quantity">
+          購買數量
+          <span class="required">*</span>
+        </label>
+
+        <!--
+          數量下拉選單
+
+          id="quantity"
+          JavaScript 會透過這個 ID 讀取客人選的數量
+
+          onchange="calculateTotal()"
+          每次數量改變，就重新計算訂單金額
+        -->
+      <select
+  id="quantity"
+  onchange="calculateTotal()"
+>
+  <option value="1">1 組</option>
+  <option value="2">2 組</option>
+  <option value="3">3 組</option>
+  <option value="4">4 組</option>
+  <option value="5">5 組</option>
+  <option value="6">6 組</option>
+  <option value="7">7 組</option>
+  <option value="8">8 組</option>
+  <option value="9">9 組</option>
+  <option value="10">10 組</option>
+  <option value="11">11 組</option>
+  <option value="12">12 組</option>
+  <option value="13">13 組</option>
+  <option value="14">14 組</option>
+  <option value="15">15 組</option>
+  <option value="16">16 組</option>
+  <option value="17">17 組</option>
+  <option value="18">18 組</option>
+  <option value="19">19 組</option>
+  <option value="20">20 組</option>
+</select>
+
+<p class="fee-note">
+  20 組以上大量訂購，請直接私訊甜遇 LINE 官方帳號。
+</p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         訂購人資料區
+         ================================================== -->
+
+    <section class="card">
+
+      <!-- 區塊標題 -->
+      <h2 class="section-title">
+        訂購人資料
+      </h2>
+
+
+      <!-- 訂購人姓名 -->
+      <div class="field">
+
+        <label for="name">
+          姓名
+          <span class="required">*</span>
+        </label>
+
+        <!--
+          id="name"
+          訂購人的姓名
+        -->
+        <input
+          id="name"
+          type="text"
+          placeholder="請輸入姓名"
+        >
+
+      </div>
+
+
+      <!-- 訂購人手機號碼 -->
+      <div class="field">
+
+        <label for="phone">
+          手機號碼
+          <span class="required">*</span>
+        </label>
+
+        <!--
+          type="tel"
+          手機會顯示電話輸入鍵盤
+
+          inputmode="numeric"
+          優先顯示數字鍵盤
+
+          maxlength="10"
+          最多只能輸入 10 碼
+        -->
+        <input
+          id="phone"
+          type="tel"
+          inputmode="numeric"
+          maxlength="10"
+          placeholder="例如：0912345678"
+        >
+
+      </div>
+
+
+      <!-- LINE 顯示名稱 -->
+      <div class="field">
+
+        <label for="lineName">
+          LINE 顯示名稱
+        </label>
+
+        <!--
+          此欄位不是必填
+          用來讓你核對 LINE 客人與訂單
+        -->
+        <input
+          id="lineName"
+          type="text"
+          placeholder="方便我們核對訂單"
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         收貨方式區
+         ================================================== -->
+
+    <section class="card">
+
+      <!-- 區塊標題 -->
+      <h2 class="section-title">
+        收貨方式
+      </h2>
+
+
+      <!-- 收貨方式選擇 -->
+      <div class="field">
+
+        <label for="deliveryMethod">
+          選擇收貨方式
+          <span class="required">*</span>
+        </label>
+
+        <!--
+          收貨方式下拉選單
+
+          onchange="changeDeliveryMethod()"
+          當客人改變收貨方式時，
+          自動切換應該顯示的欄位
+        -->
+        <select
+          id="deliveryMethod"
+          onchange="changeDeliveryMethod()"
+        >
+
+          <!-- 預設空白選項 -->
+          <option value="">
+            請選擇
+          </option>
+
+          <!-- 面交 -->
+          <option value="面交">
+            面交
+          </option>
+
+          <!-- 7-11 店到店 -->
+          <option value="7-11">
+            7-11 店到店
+          </option>
+
+          <!-- 全家店到店 -->
+          <option value="全家">
+            全家店到店
+          </option>
+
+        </select>
+
+
+        <!--
+          顯示目前收貨方式的運費說明
+        -->
+        <p
+          id="deliveryFeeNote"
+          class="fee-note"
+        >
+          請選擇收貨方式。
+        </p>
+
+      </div>
+
+
+      <!-- ==================================================
+           面交專用欄位
+           預設先隱藏
+           ================================================== -->
+
+      <div
+        id="meetingFields"
+        class="hidden"
+      >
+
+
+        <!-- 面交地點 -->
+        <div class="field">
+
+          <label for="meetingLocation">
+            面交地點
+            <span class="required">*</span>
+          </label>
+
+          <!--
+            這裡可以修改成你真正能面交的地點
+          -->
+          <select id="meetingLocation">
+
+            <option value="">
+              請選擇面交地點
+            </option>
+
+            <!--
+              修改面交地點範例：
+
+              value 是儲存到訂單的資料
+              中間文字是客人看到的名稱
+            -->
+            <option value="桃園火車站後站">
+              桃園火車站後站
+            </option>
+
+            <option value="中壢SOGO">
+              中壢SOGO
+            </option>
+
+            <option value="廣豐新天地">
+              廣豐新天地
+            </option>
+
+            <option value="平鎮7-11德享門市">
+              平鎮7-11德享門市
+            </option>
+
+            <option value="高雄左營義享天地旁">
+              高雄左營義享天地旁
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!--
+          面交日期與時間說明
+
+          客人不需要自行選擇日期或時間，
+          甜遇收到訂單後會再聯絡確認。
+        -->
+        <p class="fee-note">
+          面交日期與時間將由甜遇另行聯繫確認。
+        </p>
+
+      </div>
+
+
+      <!-- ==================================================
+           超商取貨專用欄位
+           7-11 和全家共用
+           預設先隱藏
+           ================================================== -->
+
+      <div
+        id="storeFields"
+        class="hidden"
+      >
+
+
+        <!-- 超商取貨人姓名 -->
+        <div class="field">
+
+          <label for="receiverName">
+            收件人姓名
+            <span class="required">*</span>
+          </label>
+
+          <!--
+            建議填寫真實姓名，
+            避免客人無法取貨
+          -->
+          <input
+            id="receiverName"
+            type="text"
+            placeholder="請填寫取貨人的真實姓名"
+          >
+
+        </div>
+
+
+        <!-- 超商取貨人電話 -->
+        <div class="field">
+
+          <label for="receiverPhone">
+            收件人電話
+            <span class="required">*</span>
+          </label>
+
+          <input
+            id="receiverPhone"
+            type="tel"
+            inputmode="numeric"
+            maxlength="10"
+            placeholder="例如：0912345678"
+          >
+
+        </div>
+
+
+        <!-- 超商門市名稱 -->
+        <div class="field">
+
+          <label for="storeName">
+            門市名稱
+            <span class="required">*</span>
+          </label>
+
+          <!--
+            目前先讓客人手動填寫門市名稱
+
+            例如：
+            桃園中正門市
+            中壢中央門市
+          -->
+          <input
+            id="storeName"
+            type="text"
+            placeholder="例如：桃園中正門市"
+          >
+
+        </div>
+
+
+        <!-- 超商門市店號 -->
+        <div class="field">
+
+          <label for="storeNumber">
+            門市店號
+          </label>
+
+          <!--
+            此欄位目前不是必填
+            客人知道店號時可以填寫
+          -->
+          <input
+            id="storeNumber"
+            type="text"
+            placeholder="若知道門市店號可一併填寫"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         付款方式與備註區
+         ================================================== -->
+
+    <section class="card">
+
+      <!-- 區塊標題 -->
+      <h2 class="section-title">
+        付款方式
+      </h2>
+
+
+      <!-- 付款方式 -->
+      <div class="field">
+
+        <label for="paymentMethod">
+          選擇付款方式
+          <span class="required">*</span>
+        </label>
+
+        <!--
+          付款方式選項會根據收貨方式自動產生
+
+          面交：
+          現金、銀行轉帳
+
+          超商：
+          銀行轉帳、LINE Pay
+        -->
+        <select
+          id="paymentMethod"
+          onchange="changePaymentMethod()"
+        >
+          <option value="">
+            請先選擇收貨方式
+          </option>
+        </select>
+
+      </div>
+
+      <!--
+        付款提醒區：
+        會依照付款方式顯示銀行轉帳、現金或 付款提醒
+      -->
+      <div
+        id="paymentNotice"
+        class="hidden"
+      ></div>
+
+      <!-- ==================================================
+           銀行轉帳資料
+           只有選擇銀行轉帳時才會顯示
+           ================================================== -->
+      <div
+        id="transferFields"
+        class="hidden"
+      >
+
+        <!-- 匯款人姓名 -->
+        <div class="field">
+          <label for="transferName">
+            匯款人姓名
+            <span class="required">*</span>
+          </label>
+
+          <input
+            id="transferName"
+            type="text"
+            placeholder="請填寫匯款帳戶持有人姓名"
+          >
+        </div>
+
+        <!-- 匯款帳號後五碼 -->
+        <div class="field">
+          <label for="accountLastFive">
+            匯款帳號後五碼
+            <span class="required">*</span>
+          </label>
+
+          <input
+            id="accountLastFive"
+            type="text"
+            inputmode="numeric"
+            maxlength="5"
+            placeholder="例如：12345"
+          >
+        </div>
+
+
+
+      </div>
+
+
+      <!-- 訂單備註 -->
+      <div class="field">
+
+        <label for="remark">
+          訂單備註
+        </label>
+
+        <!--
+          此欄位不是必填
+
+          客人可以填寫：
+          是否需要提袋
+          訂購補充說明
+          其他特殊需求
+        -->
+        <textarea
+          id="remark"
+          placeholder="例如：需要提袋、訂購補充說明、其他特殊需求"
+        ></textarea>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         訂單金額區
+         ================================================== -->
+
+    <section class="card">
+
+      <!-- 區塊標題 -->
+      <h2 class="section-title">
+        訂單金額
+      </h2>
+
+
+      <div class="order-total">
+
+
+        <!-- 商品小計 -->
+        <div class="total-row">
+
+          <span>
+            商品金額
+          </span>
+
+          <!--
+            JavaScript 會自動更新這裡的金額
+          -->
+          <span id="productAmount">
+            NT$129
+          </span>
+
+        </div>
+
+
+        <!-- 運費 -->
+        <div class="total-row">
+
+          <span>
+            運費
+          </span>
+
+          <!--
+            尚未選擇收貨方式前，
+            顯示「尚未選擇」
+          -->
+          <span id="shippingAmount">
+            尚未選擇
+          </span>
+
+        </div>
+
+
+        <!-- 訂單總額 -->
+        <div class="total-row">
+
+          <span>
+            訂單總額
+          </span>
+
+          <!--
+            商品小計加運費
+          -->
+          <span id="totalAmount">
+            NT$129
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         送出訂單按鈕
+         ================================================== -->
+
+    <!--
+      onclick="submitOrder()"
+
+      客人點擊後，
+      執行 JavaScript 的 submitOrder 函式
+    -->
+    <button
+      class="submit-button"
+      onclick="submitOrder()"
+    >
+      確認送出訂單
+    </button>
+
+
+    <!-- 送出訂單提醒 -->
+    <p class="notice">
+      送出訂單後，甜遇將透過 LINE 或電話與你確認付款及出貨資訊。
+    </p>
+
+
+    <!--
+      訂單送出結果區
+
+      一開始隱藏
+      成功送出後才顯示
+    -->
+    <div
+      id="orderResult"
+      class="result"
+    ></div>
+
+
+  </main>
+
+
+  <!-- ==================================================
+       JavaScript 功能區開始
+       ================================================== -->
+
+  <script>
+
+
+    /* ==================================================
+       商品與運費基本設定
+       ================================================== */
+
+
+    /*
+      杜拜巧克力每組價格
+
+      未來修改價格時，
+      只需要改這個數字。
+
+      例如改成 199 元：
+      const productPrice = 199;
+    */
+    const productPrice = 129;
+
+
+    /*
+      7-11 店到店運費
+
+      未來修改 7-11 運費，
+      直接改這個數字。
+    */
+    const sevenElevenShippingFee = 60;
+
+
+    /*
+      全家店到店運費
+
+      未來修改全家運費，
+      直接改這個數字。
+    */
+    const familyMartShippingFee = 60;
+
+
+    /*
+      甜遇 LINE 官方帳號網址
+
+      請把下面網址改成你自己的 LINE 官方帳號連結。
+      例如：
+      const lineOfficialUrl = "https://lin.ee/AbCd123";
+    */
+    const lineOfficialUrl =
+      "https://lin.ee/你的LINE網址";
+
+
+    /* ==================================================
+       收貨方式切換功能
+       ================================================== */
+
+    /*
+      當客人選擇：
+      面交、7-11、全家時，
+      這個函式會自動執行。
+    */
+    function changeDeliveryMethod() {
+
+
+      /*
+        取得客人選擇的收貨方式
+      */
+      const deliveryMethod =
+        document.getElementById("deliveryMethod").value;
+
+
+      /*
+        取得面交欄位區塊
+      */
+      const meetingFields =
+        document.getElementById("meetingFields");
+
+
+      /*
+        取得超商欄位區塊
+      */
+      const storeFields =
+        document.getElementById("storeFields");
+
+
+      /*
+        取得付款方式下拉選單
+      */
+      const paymentMethod =
+        document.getElementById("paymentMethod");
+
+
+      /*
+        取得運費說明文字
+      */
+      const deliveryFeeNote =
+        document.getElementById("deliveryFeeNote");
+
+
+      /*
+        每次切換收貨方式前，
+        先把面交和超商欄位全部隱藏。
+      */
+      meetingFields.classList.add("hidden");
+      storeFields.classList.add("hidden");
+
+
+      /*
+        清空原本的付款方式選項
+      */
+      paymentMethod.innerHTML = "";
+
+      /*
+        切換收貨方式時，
+        清除原本的付款提醒與匯款資料欄位。
+      */
+      document
+        .getElementById("transferFields")
+        .classList.add("hidden");
+
+      document
+        .getElementById("paymentNotice")
+        .classList.add("hidden");
+
+      document
+        .getElementById("paymentNotice")
+        .innerHTML = "";
+
+
+      /*
+        如果客人選擇「面交」
+      */
+      if (deliveryMethod === "面交") {
+
+
+        /*
+          顯示面交專用欄位
+        */
+        meetingFields.classList.remove("hidden");
+
+
+        /*
+          顯示面交運費說明
+        */
+        deliveryFeeNote.textContent =
+          "面交免運費。";
+
+
+        /*
+          面交可使用的付款方式
+
+          要增加或刪除付款方式，
+          可以在這裡修改。
+        */
+        paymentMethod.innerHTML = `
+          <option value="">
+            請選擇付款方式
+          </option>
+
+          <option value="現金付款">
+            面交現金付款
+          </option>
+
+          <option value="銀行轉帳">
+            銀行轉帳
+          </option>
+        `;
+      }
+
+
+      /*
+        如果客人選擇 7-11 或全家
+      */
+      else if (
+        deliveryMethod === "7-11" ||
+        deliveryMethod === "全家"
+      ) {
+
+
+        /*
+          顯示超商專用欄位
+        */
+        storeFields.classList.remove("hidden");
+
+
+        /*
+          根據不同超商顯示運費說明
+        */
+        if (deliveryMethod === "7-11") {
+
+          deliveryFeeNote.textContent =
+            "7-11 店到店運費 NT$" +
+            sevenElevenShippingFee +
+            "。";
+
+        } else {
+
+          deliveryFeeNote.textContent =
+            "全家店到店運費 NT$" +
+            familyMartShippingFee +
+            "。";
+
+        }
+
+
+        /*
+          超商取貨可使用的付款方式
+
+          目前沒有提供取貨付款。
+        */
+        paymentMethod.innerHTML = `
+          <option value="">
+            請選擇付款方式
+          </option>
+
+          <option value="銀行轉帳">
+            銀行轉帳
+          </option>
+        `;
+      }
+
+
+      /*
+        如果客人尚未選擇收貨方式
+      */
+      else {
+
+        /*
+          顯示預設提醒文字
+        */
+        deliveryFeeNote.textContent =
+          "請選擇收貨方式。";
+
+
+        /*
+          付款方式顯示尚未選擇
+        */
+        paymentMethod.innerHTML = `
+          <option value="">
+            請先選擇收貨方式
+          </option>
+        `;
+      }
+
+
+      /*
+        收貨方式改變後，
+        重新計算訂單總額。
+      */
+      calculateTotal();
+    }
+
+
+    /* ==================================================
+       付款方式切換功能
+       ================================================== */
+
+    function changePaymentMethod() {
+
+      /*
+        取得目前選擇的付款方式
+      */
+      const paymentMethod =
+        document.getElementById("paymentMethod").value;
+
+      /*
+        取得銀行轉帳資料區塊
+      */
+      const transferFields =
+        document.getElementById("transferFields");
+
+      /*
+        取得付款提醒區塊
+      */
+      const paymentNotice =
+        document.getElementById("paymentNotice");
+
+      /*
+        每次切換前先隱藏並清空
+      */
+      transferFields.classList.add("hidden");
+      paymentNotice.classList.add("hidden");
+      paymentNotice.innerHTML = "";
+
+      /*
+        選擇銀行轉帳時：
+        顯示匯款欄位，並提醒客人回傳資料至官方 LINE。
+      */
+      if (paymentMethod === "銀行轉帳") {
+
+        transferFields.classList.remove("hidden");
+        paymentNotice.classList.remove("hidden");
+
+        paymentNotice.innerHTML = `
+          <div class="payment-notice">
+            <strong>銀行轉帳注意事項</strong>
+            <br><br>
+            完成轉帳後，請到甜遇 LINE 官方帳號回傳：
+            <br><br>
+            ① 訂單編號<br>
+            ② 匯款帳號後五碼<br>
+            ③ 轉帳明細截圖
+            <br><br>
+            經核對入帳後，訂單才正式成立。
+          </div>
+        `;
+      }
+
+      /*
+        面交現金付款：
+        顯示請準備剛好金額、現場不找零。
+      */
+      else if (paymentMethod === "現金付款") {
+
+        paymentNotice.classList.remove("hidden");
+
+        paymentNotice.innerHTML = `
+          <div class="cash-notice">
+            面交採現金付款，請準備剛好金額，現場不提供找零。
+          </div>
+        `;
+      }
+
+      /*
+        面交 付款提醒
+      */
+      else if (paymentMethod === "LINE Pay") {
+
+        paymentNotice.classList.remove("hidden");
+
+        paymentNotice.innerHTML = `
+          <div class="payment-notice">
+            請依甜遇 LINE 官方帳號提供的 LINE Pay 付款方式完成付款。
+          </div>
+        `;
+      }
+    }
+
+
+    /* ==================================================
+       暫時版訂單編號產生功能
+       ================================================== */
+
+    /*
+      訂單編號格式：
+
+      TY + 年月日 + 時分秒 + 隨機兩碼
+
+      例如：
+      TY2026071323154287
+
+      正式接 Google Sheets 後，
+      建議改由 Apps Script 後端產生。
+    */
+    function generateOrderNumber() {
+
+      const now = new Date();
+
+      const year =
+        now.getFullYear();
+
+      const month =
+        String(now.getMonth() + 1).padStart(2, "0");
+
+      const day =
+        String(now.getDate()).padStart(2, "0");
+
+      const hour =
+        String(now.getHours()).padStart(2, "0");
+
+      const minute =
+        String(now.getMinutes()).padStart(2, "0");
+
+      const second =
+        String(now.getSeconds()).padStart(2, "0");
+
+      const randomNumber =
+        String(Math.floor(Math.random() * 100))
+          .padStart(2, "0");
+
+      return (
+        "TY" +
+        year +
+        month +
+        day +
+        hour +
+        minute +
+        second +
+        randomNumber
+      );
+    }
+
+
+    /* ==================================================
+       訂單金額計算功能
+       ================================================== */
+
+    function calculateTotal() {
+
+
+      /*
+        取得客人選擇的商品數量
+
+        Number() 會把文字轉成數字
+      */
+      const quantity =
+        Number(
+          document.getElementById("quantity").value
+        );
+
+
+      /*
+        取得客人選擇的收貨方式
+      */
+      const deliveryMethod =
+        document.getElementById("deliveryMethod").value;
+
+
+      /*
+        商品小計：
+        商品單價 × 數量
+      */
+      const productAmount =
+        productPrice * quantity;
+
+
+      /*
+        預設運費為 0
+      */
+      let shippingFee = 0;
+
+
+      /*
+        預設顯示「尚未選擇」
+      */
+      let shippingText = "尚未選擇";
+
+
+      /*
+        面交運費為 0 元
+      */
+      if (deliveryMethod === "面交") {
+
+        shippingFee = 0;
+        shippingText = "NT$0";
+
+      }
+
+
+      /*
+        7-11 運費
+      */
+      else if (deliveryMethod === "7-11") {
+
+        shippingFee = sevenElevenShippingFee;
+
+        shippingText =
+          "NT$" + sevenElevenShippingFee;
+
+      }
+
+
+      /*
+        全家運費
+      */
+      else if (deliveryMethod === "全家") {
+
+        shippingFee = familyMartShippingFee;
+
+        shippingText =
+          "NT$" + familyMartShippingFee;
+
+      }
+
+
+      /*
+        訂單總額：
+        商品小計 + 運費
+      */
+      const totalAmount =
+        productAmount + shippingFee;
+
+
+      /*
+        所有資料驗證完成後，
+        才產生本次訂單編號。
+      */
+      const orderNumber =
+        generateOrderNumber();
+
+
+      /*
+        依照付款方式建立成功頁面的後續提醒
+      */
+      let paymentFollowUp = "";
+
+      if (paymentMethod === "銀行轉帳") {
+
+        paymentFollowUp = `
+          <div class="payment-notice">
+            <strong>下一步：請完成付款核對</strong>
+            <br><br>
+            請將以下資料傳送至甜遇 LINE 官方帳號：
+            <br><br>
+            ① 訂單編號：${orderNumber}<br>
+            ② 匯款帳號後五碼：${accountLastFive}<br>
+            ③ 轉帳明細截圖
+            <br><br>
+            經確認入帳後，訂單才正式成立。
+
+            <a
+              class="line-button"
+              href="${lineOfficialUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              前往 LINE 回傳付款明細
+            </a>
+          </div>
+        `;
+      }
+
+      else if (paymentMethod === "現金付款") {
+
+        paymentFollowUp = `
+          <div class="cash-notice">
+            面交採現金付款，訂單總額為 NT$${totalAmount}。
+            請準備剛好金額，現場不提供找零。
+          </div>
+        `;
+      }
+
+      else if (paymentMethod === "LINE Pay") {
+
+        paymentFollowUp = `
+          <div class="payment-notice">
+            請前往甜遇 LINE 官方帳號取得 LINE Pay 付款資訊。
+
+            <a
+              class="line-button"
+              href="${lineOfficialUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              前往甜遇 LINE 官方帳號
+            </a>
+          </div>
+        `;
+      }
+
+
+      /*
+        更新網頁上的商品金額
+      */
+      document.getElementById(
+        "productAmount"
+      ).textContent =
+        "NT$" + productAmount;
+
+
+      /*
+        更新網頁上的運費
+      */
+      document.getElementById(
+        "shippingAmount"
+      ).textContent =
+        shippingText;
+
+
+      /*
+        更新網頁上的訂單總額
+      */
+      document.getElementById(
+        "totalAmount"
+      ).textContent =
+        "NT$" + totalAmount;
+    }
+
+
+    /* ==================================================
+       手機號碼格式驗證
+       ================================================== */
+
+    /*
+      驗證台灣手機號碼格式：
+
+      必須是 09 開頭
+      總共 10 碼數字
+    */
+    function isValidPhone(phone) {
+
+      return /^09\d{8}$/.test(phone);
+
+    }
+
+
+    /* ==================================================
+       送出訂單功能
+       ================================================== */
+
+    function submitOrder() {
+
+
+      /* --------------------------------------------------
+         讀取訂購人的基本資料
+         -------------------------------------------------- */
+
+
+      /*
+        取得訂購人姓名
+
+        trim()
+        會移除文字前後的空白
+      */
+      const name =
+        document.getElementById("name").value.trim();
+
+
+      /*
+        取得訂購人電話
+      */
+      const phone =
+        document.getElementById("phone").value.trim();
+
+
+      /*
+        取得 LINE 顯示名稱
+      */
+      const lineName =
+        document.getElementById("lineName").value.trim();
+
+
+      /* --------------------------------------------------
+         讀取商品資料
+         -------------------------------------------------- */
+
+
+      /*
+        取得訂購數量
+      */
+      const quantity =
+        Number(
+          document.getElementById("quantity").value
+        );
+
+
+      /* --------------------------------------------------
+         讀取收貨與付款資料
+         -------------------------------------------------- */
+
+
+      /*
+        取得收貨方式
+      */
+      const deliveryMethod =
+        document.getElementById(
+          "deliveryMethod"
+        ).value;
+
+
+      /*
+        取得付款方式
+      */
+      const paymentMethod =
+        document.getElementById(
+          "paymentMethod"
+        ).value;
+
+
+      /*
+        取得訂單備註
+      */
+      const remark =
+        document.getElementById(
+          "remark"
+        ).value.trim();
+
+      /*
+        用來儲存銀行轉帳資訊
+      */
+      let transferDetails = "";
+
+      /*
+        用來儲存匯款帳號後五碼，
+        成功頁需要顯示並提醒客人回傳。
+      */
+      let accountLastFive = "";
+
+
+      /* --------------------------------------------------
+         檢查基本資料是否正確
+         -------------------------------------------------- */
+
+
+      /*
+        如果沒有填寫姓名，
+        顯示提醒並停止送出。
+      */
+      if (!name) {
+
+        alert("請填寫訂購人姓名");
+        return;
+
+      }
+
+
+      /*
+        如果電話不是正確的 10 碼格式，
+        顯示提醒並停止送出。
+      */
+      if (!isValidPhone(phone)) {
+
+        alert("請輸入正確的 10 碼手機號碼");
+        return;
+
+      }
+
+
+      /*
+        如果沒有選擇收貨方式，
+        顯示提醒並停止送出。
+      */
+      if (!deliveryMethod) {
+
+        alert("請選擇收貨方式");
+        return;
+
+      }
+
+
+      /*
+        如果沒有選擇付款方式，
+        顯示提醒並停止送出。
+      */
+      if (!paymentMethod) {
+
+        alert("請選擇付款方式");
+        return;
+
+      }
+
+
+      /* --------------------------------------------------
+         銀行轉帳資料檢查
+         -------------------------------------------------- */
+
+      if (paymentMethod === "銀行轉帳") {
+
+        /*
+          取得匯款人姓名
+        */
+        const transferName =
+          document.getElementById(
+            "transferName"
+          ).value.trim();
+
+        /*
+          取得帳號後五碼
+        */
+        accountLastFive =
+          document.getElementById(
+            "accountLastFive"
+          ).value.trim();
+
+        if (!transferName) {
+
+          alert("請填寫匯款人姓名");
+          return;
+
+        }
+
+        /*
+          後五碼必須正好為五位數字
+        */
+        if (!/^\d{5}$/.test(accountLastFive)) {
+
+          alert("請輸入正確的匯款帳號後五碼");
+          return;
+
+        }
+
+        /*
+          建立訂單成功畫面中的匯款資料
+        */
+        transferDetails = `
+          <div class="result-line">
+            <strong>匯款人姓名：</strong>
+            ${transferName}
+          </div>
+
+          <div class="result-line">
+            <strong>匯款帳號後五碼：</strong>
+            ${accountLastFive}
+          </div>
+
+        `;
+      }
+
+
+      /*
+        建立收貨資訊文字
+
+        面交與超商會產生不同內容
+      */
+      let deliveryDetails = "";
+
+
+      /* --------------------------------------------------
+         面交資料處理
+         -------------------------------------------------- */
+
+      if (deliveryMethod === "面交") {
+
+
+        /*
+          取得面交地點
+        */
+        const meetingLocation =
+          document.getElementById(
+            "meetingLocation"
+          ).value;
+
+
+        /*
+          面交只需要選擇地點，
+          日期與時間由甜遇後續聯絡確認。
+        */
+        if (!meetingLocation) {
+
+          alert("請選擇面交地點");
+          return;
+        }
+
+
+        /*
+          建立面交訂單確認內容
+        */
+        deliveryDetails = `
+          <div class="result-line">
+            <strong>面交地點：</strong>
+            ${meetingLocation}
+          </div>
+
+          <div class="result-line">
+            <strong>面交時間：</strong>
+            甜遇將另行聯繫確認
+          </div>
+        `;
+      }
+
+
+      /* --------------------------------------------------
+         超商資料處理
+         -------------------------------------------------- */
+
+      else {
+
+
+        /*
+          取得超商收件人姓名
+        */
+        const receiverName =
+          document.getElementById(
+            "receiverName"
+          ).value.trim();
+
+
+        /*
+          取得超商收件人電話
+        */
+        const receiverPhone =
+          document.getElementById(
+            "receiverPhone"
+          ).value.trim();
+
+
+        /*
+          取得門市名稱
+        */
+        const storeName =
+          document.getElementById(
+            "storeName"
+          ).value.trim();
+
+
+        /*
+          取得門市店號
+          此欄位不是必填
+        */
+        const storeNumber =
+          document.getElementById(
+            "storeNumber"
+          ).value.trim();
+
+
+        /*
+          檢查收件人姓名
+        */
+        if (!receiverName) {
+
+          alert("請填寫收件人姓名");
+          return;
+
+        }
+
+
+        /*
+          檢查收件人電話
+        */
+        if (!isValidPhone(receiverPhone)) {
+
+          alert(
+            "請輸入正確的收件人手機號碼"
+          );
+
+          return;
+        }
+
+
+        /*
+          檢查門市名稱
+        */
+        if (!storeName) {
+
+          alert("請填寫超商門市名稱");
+          return;
+
+        }
+
+
+        /*
+          建立超商訂單確認內容
+        */
+        deliveryDetails = `
+          <div class="result-line">
+            <strong>收件人：</strong>
+            ${receiverName}
+          </div>
+
+          <div class="result-line">
+            <strong>收件電話：</strong>
+            ${receiverPhone}
+          </div>
+
+          <div class="result-line">
+            <strong>取貨門市：</strong>
+            ${deliveryMethod} ${storeName}
+          </div>
+
+          <div class="result-line">
+            <strong>門市店號：</strong>
+            ${storeNumber || "未填寫"}
+          </div>
+        `;
+      }
+
+
+      /* --------------------------------------------------
+         計算最後訂單金額
+         -------------------------------------------------- */
+
+
+      /*
+        商品小計
+      */
+      const productAmount =
+        productPrice * quantity;
+
+
+      /*
+        根據收貨方式決定運費
+      */
+      let shippingFee = 0;
+
+
+      /*
+        7-11 運費
+      */
+      if (deliveryMethod === "7-11") {
+
+        shippingFee =
+          sevenElevenShippingFee;
+
+      }
+
+
+      /*
+        全家運費
+      */
+      else if (deliveryMethod === "全家") {
+
+        shippingFee =
+          familyMartShippingFee;
+
+      }
+
+
+      /*
+        訂單總額
+      */
+      const totalAmount =
+        productAmount + shippingFee;
+
+
+      /* --------------------------------------------------
+         顯示訂單確認結果
+         -------------------------------------------------- */
+
+
+      /*
+        找到訂單結果區塊
+      */
+      const result =
+        document.getElementById(
+          "orderResult"
+        );
+
+
+      /*
+        將訂單內容放進結果區塊
+      */
+      result.innerHTML = `
+
+        <h3>
+          訂單資料確認完成
+        </h3>
+
+        <div class="order-number">
+          訂單編號：${orderNumber}
+        </div>
+
+        <div class="result-line">
+          <strong>訂購人：</strong>
+          ${name}
+        </div>
+
+        <div class="result-line">
+          <strong>電話：</strong>
+          ${phone}
+        </div>
+
+        <div class="result-line">
+          <strong>LINE 名稱：</strong>
+          ${lineName || "未填寫"}
+        </div>
+
+        <div class="result-line">
+          <strong>商品：</strong>
+          杜拜巧克力
+        </div>
+
+        <div class="result-line">
+          <strong>商品單價：</strong>
+          NT$${productPrice}
+        </div>
+
+        <div class="result-line">
+          <strong>數量：</strong>
+          ${quantity} 組
+        </div>
+
+        <div class="result-line">
+          <strong>商品小計：</strong>
+          NT$${productAmount}
+        </div>
+
+        <div class="result-line">
+          <strong>收貨方式：</strong>
+          ${deliveryMethod}
+        </div>
+
+        ${deliveryDetails}
+
+        <div class="result-line">
+          <strong>付款方式：</strong>
+          ${paymentMethod}
+        </div>
+
+        ${transferDetails}
+
+        <div class="result-line">
+          <strong>運費：</strong>
+          NT$${shippingFee}
+        </div>
+
+        <div class="result-line">
+          <strong>訂單總額：</strong>
+          NT$${totalAmount}
+        </div>
+
+        <div class="result-line">
+          <strong>備註：</strong>
+          ${remark || "無"}
+        </div>
+
+        ${paymentFollowUp}
+
+        <p style="margin-top: 14px;">
+          目前為訂單測試版本，資料尚未寫入
+          Google 試算表。
+        </p>
+      `;
+
+
+      /*
+        顯示訂單結果區塊
+      */
+      result.style.display = "block";
+
+
+      /*
+        網頁自動移動到訂單結果的位置
+      */
+      result.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ==================================================
+       網頁開啟時先計算一次金額
+       ================================================== */
+
+    calculateTotal();
+
+  </script>
+
+  <!-- ==================================================
+       JavaScript 功能區結束
+       ================================================== -->
+
+</body>
+
+</html>
